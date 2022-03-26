@@ -1,0 +1,209 @@
+{% extends 'promanagerindex.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+
+  .Search {
+    margin-top: 4%;
+    float: left;
+    margin-right: 5%;
+    padding-left: 3%;
+    padding-right: 3%;
+    line-height: 2;
+  
+    width:95px;
+}
+
+
+  .text-left,
+    #hf {
+        font-family: rubik, sans-serif;
+        color: white;
+        font-weight: 400;
+        font-size: 18px;
+    }
+
+    
+
+
+ 
+
+
+    .ui-widget-content {
+    border: none;
+    background: #191c24;
+    color: #636d87;
+  }
+
+  .ui-datepicker th {
+    padding: 0.7em 0.3em;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    color: #636d87;
+  }
+
+  .ui-state-default,
+  .ui-widget-content .ui-state-default,
+  .ui-widget-header .ui-state-default,
+  .ui-button,
+  html .ui-button.ui-state-disabled:hover,
+  html .ui-button.ui-state-disabled:active {
+    border: 1px solid #636d87;
+    border-radius: 50%;
+    background: #191c24;
+    font-weight: normal;
+    color: #636d87;
+    text-align: center;
+  }
+
+  .ui-widget-header {
+    border: 1px solid #636d87;
+    background: #191c24;
+    color: #636d87;
+    font-weight: bold;
+  }
+
+  .ui-widget.ui-widget-content {
+    border: 1px solid #636d87;
+  }
+</style>
+
+  <div class="container">
+    <label style="font-size: 20px;font-weight: 600;color: #636d87;">Apply Leave</label><br><br>
+    <div id="firstbox" class="row shadow p-3" style="background-color: #191c24;">
+      <div class="col-md-12 ">
+
+        <form method="post" action="" enctype="multipart/form-data" id="myForm">
+          {% csrf_token %}
+  
+          {% for i in pro %}
+            <input type="hidden" name="pr_id" value="{{i.id}}">
+            {% endfor %}
+            <div class="row">
+              <div class="col-md-6 col-lg-6">
+                <div class="text-left mt-3 ">From</div>
+                <input autocomplete="off" type="date" name="from" class="form-control text-light mt-2 " style="border-radius:5px;"
+                  id="from" onchange="myFunction()" placeholder="Leave From..." autocomplete="off" required>
+              </div>
+              <div class="col-md-6">
+                <div class="text-left mt-3 ">To</div>
+                <input autocomplete="off" type="date" name="to" class="form-control text-light mt-2" style="border-radius:5px;"
+                  id="to" onchange="myFunction()" placeholder="Leave To..." autocomplete="off" required>
+              </div>
+            </div>
+            
+            <div class="col pt-2" id="halful">
+              <br>
+              <input type="radio" id="half" name="haful" value="half Day">
+              <label id="hf">Half Day</label><br><br>
+              <input type="radio" id="full" name="haful" value="full Day" checked="checked">
+              <label id="hf">Full Day</label>
+            </div>
+            <div class="row">
+              <div class="container">
+                <div class="text-left mt-5 ">Reason</div>
+                <textarea autocomplete="off" type="text" name="reason" class="form-control text-light mt-2 "
+                  style="border-radius:5px;height: 100px;" id="reason" placeholder="Leave Reason" required></textarea>
+              </div>
+            </div>
+            <div class=" row  mt-5 ">
+
+              <div class="col-md-4 offset-5">
+               
+                <button type="submit" class="btn btn-outline-primary btn-icon-text">
+                  <i class="mdi mdi-file-check btn-icon-prepend"></i> Submit </button>
+              </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!--  date picker  -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+ $(function () {
+            $("#from").datepicker({
+                minDate: 0,
+                onClose: function (selectedDate) {
+                    $("#to").datepicker("option", "minDate", selectedDate);
+                }
+            });
+            $("#to").datepicker({
+
+                onClose: function (selectedDate) {
+                    $("#from").datepicker("option", "maxDate", selectedDate);
+                }
+            });
+
+        });
+
+
+
+
+
+        document.getElementById("halful").style.display = "none";
+
+        function myFunction() {
+            var x = document.getElementById("from").value;
+            var y = document.getElementById("to").value;
+            if (x, y == '') {
+                document.getElementById("halful").style.display = "none";
+            }
+            else if (x == y) {
+                document.getElementById("halful").style.display = "block";
+            }
+            else {
+                document.getElementById("halful").style.display = "none";
+            }
+        }
+        $(document).on('click', '#btn-submit', function (e) {
+            e.preventDefault();
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: true
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, apply Leave!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true,
+               
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire(
+                        'Applied',
+                        'Your leave has been Applied.',
+                        'success'
+                    )
+                    $('#myForm').submit();
+                } else if (
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelled',
+                        'Your leave request cancelled',
+                        'error'
+                    )
+                }
+            })
+        })
+  </script>
+
+</body>
+{% endblock %}

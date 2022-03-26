@@ -1,0 +1,161 @@
+<<<<<<< HEAD
+{% extends 'MAN_index.html' %}
+{% block content %}
+=======
+{% extends 'index.html' %}
+{% block body %}
+>>>>>>> 4439601a4a1095de45bc22cff47f378125e80b79
+{% load static %}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<<<<<<< HEAD
+
+<form action="{% url 'MAN_ViewCurrenttraineeattendancesort' user_registration.id %}" method="POST"> 
+  {% csrf_token %}
+=======
+>>>>>>> 4439601a4a1095de45bc22cff47f378125e80b79
+<div class="row ">
+    <div class="col-12 grid-margin">
+      <div class="card mt-3">
+        <div class="card-body">
+<<<<<<< HEAD
+          <h4 class="card-title">Current Trainee Attendance</h4>
+            <div class="row">
+                <div class="col-lg-12">
+                <label class="text-muted">SELECT FROM DATE</label>
+                <input name="fromdate" type="date" class="form-control text-white txtDate"  id="startdate" />
+                </div>
+                <div class="col-lg-12 mt-3">
+                <label class="text-muted">SELECT TO DATE</label>
+                <input name="todate" type="date" class="form-control text-white txtDate" id="enddate" />
+                </div>
+                <div class="col-lg-9"></div>
+                <div class="col-lg-3 mt-3">
+                <button id="btnSearch" type="submit" class="btn btn-primary w-100" >Search</button>
+                </div>
+            </div>
+            <!-- <table class="table  table-responsive" id="tble" >
+=======
+          <h4 class="card-title">Trainer Attendance</h4>
+            <div class="row">
+                <div class="col-lg-12">
+                <label class="text-muted">SELECT FROM DATE</label>
+                <input type="date" class="form-control text-white"  id="startdate" />
+                </div>
+                <div class="col-lg-12 mt-3">
+                <label class="text-muted">SELECT TO DATE</label>
+                <input type="date" class="form-control text-white" id="enddate" />
+                </div>
+                <div class="col-lg-9"></div>
+                <div class="col-lg-3 mt-3">
+                <button id="btnSearch" type="button" class="btn btn-primary w-100" >Search</button>
+                </div>
+            </div>
+            <table class="table  table-responsive" id="tble" style="display: none">
+>>>>>>> 4439601a4a1095de45bc22cff47f378125e80b79
+              <thead>
+                <tr>
+                  <th>DATE</th>
+                  <th>STATUS</th>
+                  <th>LOGIN TIME</th>
+<<<<<<< HEAD
+                  <th>LOGOUT TIME</th> -->
+                <!-- </tr>
+              </thead>                    
+              <tbody>
+                {% for i in adata %}
+                <tr>
+                  <td>{{i.date}}</td> -->
+                  <!-- <td><label class="badge badge-success">{{i.status}}</label></td> -->
+                  <!-- <td>10.00 am</td>
+                  <td>05.00 pm</td> -->
+                <!-- </tr>
+               {% endfor %}
+              
+              </tbody>
+            </table> -->
+=======
+                  <th>LOGOUT TIME</th>
+                </tr>
+              </thead>                    
+              <tbody>
+                <tr>
+                  <td>05/02/2022</td>
+                  <td><label class="badge badge-success">Present</label></td>
+                  <td>10.00 am</td>
+                  <td>05.00 pm</td>
+                </tr>
+                <tr>
+                  <td>06/02/2022</td>
+                  <td><label class="badge badge-warning">Half day</label></td>
+                  <td>10.00 am</td>
+                  <td>01.00 pm</td>
+                </tr>
+                <tr>
+                  <td>07/02/2022</td>
+                  <td><label class="badge badge-danger">Absent</label></td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+>>>>>>> 4439601a4a1095de45bc22cff47f378125e80b79
+        </div>
+      </div>
+    </div>
+</div>
+<<<<<<< HEAD
+<!-- <script>
+=======
+<script>
+>>>>>>> 4439601a4a1095de45bc22cff47f378125e80b79
+  const targetDiv = document.getElementById("tble");
+  const btn = document.getElementById("btnSearch");
+  btn.onclick = function () {
+    if (targetDiv.style.display = "block") {
+      targetDiv.style.display = "block";
+    } else {
+      targetDiv.style.display !== "none";
+    }
+  };
+</script>
+  
+<<<<<<< HEAD
+  <script>
+  $( function() {
+    $( "#startdate" ).datepicker({ minDate: -20, maxDate: "+1M +10D" });
+  } );
+  </script> -->
+
+  <script>
+    $(function() {
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
+        var maxDate = year + '-' + month + '-' + day;
+        $('.txtDate').attr('max', maxDate);
+
+    })
+</script>
+
+=======
+  <script>
+  $( function() {
+    $( "#startdate" ).datepicker({ minDate: -20, maxDate: "+1M +10D" });
+  } );
+  </script>
+
+>>>>>>> 4439601a4a1095de45bc22cff47f378125e80b79
+{% endblock %}

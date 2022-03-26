@@ -1,0 +1,227 @@
+{% extends 'BRadmin_index.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+<<<<<<< HEAD
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<div class="row ">
+    <div class="col-12 grid-margin">
+      <div class="card mt-3">
+        <div class="card-body">
+          <h4 class="card-title">Attendance</h4>
+=======
+<style>
+#tble{
+  margin-bottom: 5px;
+  color: #6c7293; 
+  /* width: 65%; 
+  margin-top: 25px;*/
+  /* margin-left: 25%;  */
+  width: 100%;
+  display: none;
+}
+
+</style>
+<body>
+  
+
+    <!-- <div class="content-wrapper"> -->
+  <!-- <div><label id="head">ATTENDANCE</label></div> -->
+  <!-- <h3 style="margin-left: 20px;">ATTENDANCE</h3> -->
+  <!-- <div class="container"> -->
+    
+  
+    <div class="card">
+      
+        <div class="card-body">
+          <h3 style="margin-bottom: 20px;">ATTENDANCE</h3>
+         <form class="form-inline">
+            <div class="">
+                 <!-- <label>SELECT FROM DATE</label>  -->
+                 <label class="sr-only" for="inlineFormInputName2">From</label>
+                 <input type="text" class="form-control mb-2 mr-sm-2" id="txtFrom">
+                
+            <div class="">
+              <label class="sr-only" for="inlineFormInputName2">To</label>
+              <input type="text" class="form-control mb-2 mr-sm-2" id="txtTo">
+             
+            </div>
+            <!-- <button id="btnSearch" type="button" class="btn btn-danger Search"  >Search</button> -->
+>>>>>>> 4439601a4a1095de45bc22cff47f378125e80b79
+            <div class="row">
+                <div class="col-lg-12">
+                <label class="text-muted">SELECT FROM DATE</label>
+                <input type="date" class="form-control text-white"  id="startdate" />
+                </div>
+                <div class="col-lg-12 mt-3">
+                <label class="text-muted">SELECT TO DATE</label>
+                <input type="date" class="form-control text-white" id="enddate" />
+                </div>
+                <div class="col-lg-9"></div>
+                <div class="col-lg-3 mt-3">
+                <button id="btnSearch" type="button" class="btn btn-primary w-100" >Search</button>
+                </div>
+            </div>
+<<<<<<< HEAD
+            <table class="table  table-responsive" id="tble" style="display: none">
+              <thead>
+                <tr>
+                  <th>DATE</th>
+                  <th>STATUS</th>
+                  <th>LOGIN TIME</th>
+                  <th>LOGOUT TIME</th>
+                </tr>
+              </thead>                    
+              <tbody>
+                <tr>
+                  <td>05/02/2022</td>
+                  <td><label class="badge badge-success">Present</label></td>
+                  <td>10.00 am</td>
+                  <td>05.00 pm</td>
+                </tr>
+                <tr>
+                  <td>06/02/2022</td>
+                  <td><label class="badge badge-warning">Half day</label></td>
+                  <td>10.00 am</td>
+                  <td>01.00 pm</td>
+                </tr>
+                <tr>
+                  <td>07/02/2022</td>
+                  <td><label class="badge badge-danger">Absent</label></td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+</div>
+<script>
+  const targetDiv = document.getElementById("tble");
+  const btn = document.getElementById("btnSearch");
+  btn.onclick = function () {
+    if (targetDiv.style.display = "block") {
+      targetDiv.style.display = "block";
+    } else {
+      targetDiv.style.display !== "none";
+    }
+  };
+</script>
+  
+  <script>
+  $( function() {
+    $( "#startdate" ).datepicker({ minDate: -20, maxDate: "+1M +10D" });
+  } );
+  </script>
+
+{% endblock %}
+=======
+
+            <div class="row">   
+              <div class="col-12 grid-margin">
+                     
+                    <table class="table  table-responsive w-100" id="tble">
+                      <thead>
+                        <tr>
+                          <th>DATE</th>
+                          <th>STATUS</th>
+                          <th>LOGIN TIME</th>
+                          <th>LOGOUT TIME</th>
+                          <th>PERIOD</th>
+                        </tr>
+                      </thead>                    
+                      <tbody>
+                        <tr>
+                          <td>07/02/2022</td>
+                          <td>Present</td>
+                          <td>10.00 am</td>
+                          <td>12.30 am</td>
+                          <td>Half Day</td>
+                        </tr>
+                        <tr>
+                          <td>08/02/2022</td>
+                          <td>Present</td>
+                          <td>10.00 am</td>
+                          <td>5.00 pm</td>
+                          <td>Full Day</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                 
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    {% comment %} <script>
+      var a;
+      function display()
+      {
+        if(a==1)
+        {
+          document.getElementById("tble").style.display="block";
+        }
+        
+      }
+    </script> {% endcomment %}
+    
+    {% comment %} <script type="text/javascript">
+      $("#btnSearch").click(function() {
+        const deptId = $("txtFrom").val();
+        const desgId = $("txtTo").val();
+        $.ajax({
+          url: '\app\man_TLattendance',
+          data: {
+            'dept_id': deptId,
+            'desig_id': desgId
+          },
+          success: function(data){
+            $(#tble).html(data);
+          }
+        });
+      });
+      function show(){
+        document.getElementById('tble').style.display ="block";
+      }
+    </script> {% endcomment %}
+
+    <script>
+      const targetDiv = document.getElementById("tble");
+      const btn = document.getElementById("btnSearch");
+      btn.onclick = function () {
+        if (targetDiv.style.display = "block") {
+          targetDiv.style.display = "block";
+        } else {
+          targetDiv.style.display !== "none";
+        }
+      };
+    </script>
+
+
+<script>
+  $(function () {
+    $("#txtFrom").datepicker({
+      minDate: new Date(2022, 2 - 1, 1)
+    });
+  });
+  $(function () {
+    $("#txtTo").datepicker({
+       maxDate: new Date(2022, 3 - 1, 1)
+    });
+  });
+</script>
+
+    </body>
+{% endblock %}
+>>>>>>> 4439601a4a1095de45bc22cff47f378125e80b79

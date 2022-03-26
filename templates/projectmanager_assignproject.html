@@ -1,0 +1,60 @@
+{% extends 'promanagerindex.html' %} {% load static %} {% block content %}
+<html>
+
+<title>Create Project</title>
+
+<form class="card col-12" action=""  method="post" >
+  {% csrf_token %}
+  <div class="form-group">
+   
+    <div class="card-body col-12">
+      <h2>Assign Project</h2>
+      <br>
+      <label>Select Team Leader</label>
+      
+      <select class="form-control" name="pname" id="" style='color:white !important'>
+        <option>
+          --select--
+        </option>
+        {% for i in spa %}
+        <option value="{{i.id}}">{{i.fullname}}</option>
+       
+        {% endfor %}
+         </select> <br>
+         
+     
+      <label>Project</label>
+      <select class="form-control" name="yyy" id="" style='color:white !important'>
+        <option>
+          --select--
+        </option>
+        {% for j in pvar %}
+        <option value="{{j.id}}">{{j.project}}</option>
+       print({{j.id}})
+        {% endfor %}
+      </select>  <br>
+      <label>Task</label>
+      <input type="text" class="form-control card-title col-12 md-4" name="task" required>
+      <label>Description</label>
+      <textarea type="text" name="desc" class="form-control card-title col-12 md-4" style='color:white !important;height: 100px;'></textarea>
+      <label>Start date</label>
+      <input type="date" name="sdate" class="form-control card-title col-12 md-4" style='color:white !important'>
+      <label>End date</label>
+      <input type="date" name="edate" class="form-control card-title col-12 md-4" style='color:white !important'>
+      <label>File Upload</label>
+      <input type="file" name="pfile" class="form-control card-title col-12" style='color:white !important'>
+      <div class="vertical-center">
+        <button type="submit" style="float: right;" class="btn btn-outline-primary btn-icon-text">
+          <i class="mdi mdi-file-check btn-icon-prepend"></i> Assign </button>
+      </div>
+    </div>
+    </tr>
+  </div>
+  </div>
+
+
+</form>
+
+{% endblock %}
+
+</html>
